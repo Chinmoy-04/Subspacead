@@ -18,7 +18,7 @@ match almost exactly.
 | Aggregated tables | [`results/tables.md`](results/tables.md) |
 | Machine-readable summary | [`results/results.json`](results/results.json) |
 | Qualitative figures | [`results/figures/`](results/figures/) |
-| Interactive demo | Streamlit app under [`app/`](app/) |
+| Interactive demo | Website in [`web/`](web/) with a FastAPI backend in [`server/`](server/) |
 
 ---
 
@@ -212,25 +212,43 @@ kill the process and reset any `running` unit to `pending` (see `scripts/runctl.
 
 ---
 
-## Streamlit demo
+## Website and live demo
+
+The showcase site is a Next.js app in `web/` backed by a FastAPI server in `server/`
+that wraps the `subspacead` package. Run both, from the repo root:
 
 ```bash
-uv run streamlit run app/Home.py
+# 1. API on :8000 (loads DINOv2 on the GPU on first fit)
+uv run uvicorn server.main:app --port 8000
+
+# 2. Website on :3000 (proxies /api/* to :8000)
+cd web
+npm i
+npm run sync-assets   # converts results/figures into web/public/gallery
+npm run dev
 ```
 
-Open http://localhost:8501
+Open http://localhost:3000. Use the palette button in the header to switch
+between light (Mono Inverse) and dark (Thermal Graphite).
 
-| Page | Purpose |
-|------|---------|
-| **Home** | Headline metrics vs paper |
-| **Live Demo** | Fit subspace on a category; browse anomalous/normal; heatmaps |
-| **Results** | Paper vs ours charts + tables |
-| **Ablations** | Layers / τ / backbone / resolution / batched0 |
-| **Gallery** | Qualitative successes & failure cases |
-| **Runs** | Pause / resume long jobs |
+| Route | Purpose |
+|-------|---------|
+| `/` | Home: specimen panel, paper-vs-ours readings, method, cases |
+| `/demo` | Fit a subspace on a category, score anomalous/normal/uploaded images |
+| `/method` | The five pipeline steps with this run's settings |
+| `/results` | Paper vs ours gauge, Table 1, per-category scores, raw `tables.md` |
+| `/ablations` | Layers / τ / backbone / resolution / batched 0-shot |
+| `/gallery` | Successes and failure cases with a lightbox |
+| `/lab/runs` | Pause / resume / monitor long jobs (linked from the footer) |
 
-Demo tip: start with preset **MVTec · bottle**, mode **Fast demo** (ViT-B @ 448),
-**Fit subspace**, then switch test images without refitting.
+Results, ablations and the gallery read the live API when it is up and fall
+back to the snapshot bundled in `web/src/content/` when it is not, so the site
+still renders without a GPU. The home page cases come from
+`uv run python scripts/export_showcase.py`, which writes `web/public/showcase/`
+and `web/src/content/showcase.json`.
+
+Demo tip: start with preset **MVTec · bottle** in **Fast** mode (ViT-B @ 448),
+press **Fit subspace**, then click test thumbnails to score them without refitting.
 
 ---
 
@@ -239,7 +257,8 @@ Demo tip: start with preset **MVTec · bottle**, mode **Fast demo** (ViT-B @ 448
 ```
 subspacead/          # core library (backbone, PCA, metrics, runner, cache)
 scripts/             # download, benchmark, ablations, aggregate, figures, runctl
-app/                 # Streamlit multipage demo
+server/              # FastAPI wrapper: fit, score, results, ablations, gallery, runs
+web/                 # Next.js showcase site and live demo
 configs/default.yaml # paper hyperparameters
 findings.html        # standalone findings write-up
 results/             # metrics JSON, tables.md, figures/

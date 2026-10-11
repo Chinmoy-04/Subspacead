@@ -40,9 +40,6 @@ results/ablations/
 Thumbs.db
 *.swp
 
-# Streamlit
-.streamlit/secrets.toml
-
 # Torch hub cache stays in user home; ignore local copies
 torch_hub/
 
