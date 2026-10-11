@@ -1,0 +1,55 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+dist/
+build/
+.venv/
+venv/
+*.egg
+
+# UV / packaging
+uv.lock
+
+# Data & caches (large)
+data/
+cache/
+features/
+runs/
+*.tar
+*.tar.xz
+*.zip
+
+# Results can be large; keep markdown/JSON summaries tracked
+results/figures/
+results/models/
+results/mvtec/
+results/visa/
+results/ablations/
+!results/tables.md
+!results/results.json
+!results/.gitkeep
+
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+*.swp
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Torch hub cache stays in user home; ignore local copies
+torch_hub/
+
+# Temp
+*.tmp
+*.partial
+PAUSE
+*.log
+
+.tmp/

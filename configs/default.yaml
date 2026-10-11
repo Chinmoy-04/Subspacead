@@ -1,0 +1,27 @@
+# SubspaceAD default hyperparameters (paper settings)
+image_size: 672
+backbone: dinov2_vitg14
+# 1-indexed blocks 22-28 -> 0-indexed [21..27]
+layers: [21, 22, 23, 24, 25, 26, 27]
+aggregation: mean  # mean | concat | final7 | last
+n_augmentations: 30
+rotation_step: 15  # degrees; angles 0, 15, ..., 345
+tau: 0.99
+rho: 0.01
+gaussian_sigma: 4.0
+batch_size: 2
+dtype: float16
+device: cuda
+seeds: [0, 1, 2, 3, 4]
+shots: [1, 2, 4]
+# Categories where rotation must NOT be applied (orientation is part of normality)
+no_rotation_categories:
+  - transistor
+datasets:
+  - mvtec
+  - visa
+paths:
+  data_root: data
+  cache_root: cache
+  results_root: results
+  runs_root: runs
