@@ -11,8 +11,24 @@ from pathlib import Path
 import streamlit as st
 
 ROOT = Path(__file__).resolve().parents[1].parent
-st.set_page_config(page_title="Runs · SubspaceAD", layout="wide")
-st.title("Runs")
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from app.demo_utils import inject_css
+
+st.set_page_config(page_title="Runs · SubspaceAD", layout="wide", page_icon="▣")
+inject_css()
+st.markdown(
+    """
+<div class="sa-hero">
+  <div class="sa-tag">Dev</div>
+  <h1>Runs</h1>
+  <p>Pause / resume long benchmark and ablation jobs. Soft pause waits for the
+  current unit; use terminal kill for an immediate stop.</p>
+</div>
+""",
+    unsafe_allow_html=True,
+)
 
 runs_root = ROOT / "runs"
 runs_root.mkdir(exist_ok=True)

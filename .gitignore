@@ -51,5 +51,6 @@ torch_hub/
 *.partial
 PAUSE
 *.log
+findings.html
 
 .tmp/
