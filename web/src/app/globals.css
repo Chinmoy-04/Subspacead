@@ -1,0 +1,330 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "lenis/dist/lenis.css";
+
+@custom-variant dark (&:is(html[data-theme="dark"] *));
+
+/* ------------------------------------------------------------------ */
+/* Color modes. Light = Mono Inverse, dark = Thermal Graphite.         */
+/* Use html[data-theme] (not bare :root) so dark beats the light       */
+/* fallback. Semantic tokens below map the palette; `.inverse` swaps   */
+/* it for full-bleed contrast sections.                                */
+/* ------------------------------------------------------------------ */
+
+:root {
+  --p-bg: #ffffff;
+  --p-fg: #0a0a0a;
+  --p-fg-muted: #6b6b6b;
+  --p-surface: #eeeeee;
+  --p-surface-2: #d6d6d6;
+  --p-rule: #e4e4e4;
+  --p-accent: #0a0a0a;
+  --p-accent-fg: #ffffff;
+  --p-series-2: #a3a3a3;
+
+  --p-inv-bg: #000000;
+  --p-inv-fg: #ffffff;
+  --p-inv-fg-muted: #8f8f8f;
+  --p-inv-surface: #141414;
+  --p-inv-surface-2: #262626;
+  --p-inv-rule: #262626;
+  --p-inv-accent: #ffffff;
+  --p-inv-accent-fg: #000000;
+  --p-inv-series-2: #5c5c5c;
+  color-scheme: light;
+}
+
+html[data-theme="light"] {
+  --p-bg: #ffffff;
+  --p-fg: #0a0a0a;
+  --p-fg-muted: #6b6b6b;
+  --p-surface: #eeeeee;
+  --p-surface-2: #d6d6d6;
+  --p-rule: #e4e4e4;
+  --p-accent: #0a0a0a;
+  --p-accent-fg: #ffffff;
+  --p-series-2: #a3a3a3;
+
+  --p-inv-bg: #000000;
+  --p-inv-fg: #ffffff;
+  --p-inv-fg-muted: #8f8f8f;
+  --p-inv-surface: #141414;
+  --p-inv-surface-2: #262626;
+  --p-inv-rule: #262626;
+  --p-inv-accent: #ffffff;
+  --p-inv-accent-fg: #000000;
+  --p-inv-series-2: #5c5c5c;
+  color-scheme: light;
+}
+
+html[data-theme="dark"] {
+  --p-bg: #121212;
+  --p-fg: #e8e4df;
+  --p-fg-muted: #9b948b;
+  --p-surface: #1b1a19;
+  --p-surface-2: #252321;
+  --p-rule: #2c2a27;
+  --p-accent: #ff6a2b;
+  --p-accent-fg: #121212;
+  --p-series-2: #6d655c;
+
+  --p-inv-bg: #241f1c;
+  --p-inv-fg: #f3eee8;
+  --p-inv-fg-muted: #a59c91;
+  --p-inv-surface: #2e2824;
+  --p-inv-surface-2: #39322d;
+  --p-inv-rule: #3d3530;
+  --p-inv-accent: #ff6a2b;
+  --p-inv-accent-fg: #121212;
+  --p-inv-series-2: #6d655c;
+  color-scheme: dark;
+}
+
+/* Semantic tokens (shadcn + site + bklit charts) */
+:root,
+[data-theme],
+.inverse {
+  --background: var(--p-bg);
+  --foreground: var(--p-fg);
+  --card: var(--p-surface);
+  --card-foreground: var(--p-fg);
+  --popover: var(--p-bg);
+  --popover-foreground: var(--p-fg);
+  --primary: var(--p-accent);
+  --primary-foreground: var(--p-accent-fg);
+  --secondary: var(--p-surface);
+  --secondary-foreground: var(--p-fg);
+  --muted: var(--p-surface);
+  --muted-foreground: var(--p-fg-muted);
+  --accent: var(--p-surface-2);
+  --accent-foreground: var(--p-fg);
+  --destructive: #e5484d;
+  --border: var(--p-rule);
+  --input: var(--p-rule);
+  --ring: var(--p-accent);
+  --surface-2: var(--p-surface-2);
+
+  --chart-1: var(--p-accent);
+  --chart-2: var(--p-series-2);
+  --chart-3: color-mix(in oklab, var(--p-accent) 55%, var(--p-bg));
+  --chart-4: color-mix(in oklab, var(--p-series-2) 55%, var(--p-bg));
+  --chart-5: var(--p-fg-muted);
+  --chart-background: var(--p-bg);
+  --chart-foreground: var(--p-fg);
+  --chart-foreground-muted: var(--p-fg-muted);
+  --chart-line-primary: var(--chart-1);
+  --chart-line-secondary: var(--chart-2);
+  --chart-crosshair: var(--p-fg-muted);
+  --chart-grid: var(--p-rule);
+  --chart-brush-border: var(--p-rule);
+  --chart-tooltip-background: color-mix(in oklab, var(--p-fg) 92%, transparent);
+  --chart-tooltip-foreground: var(--p-bg);
+  --chart-tooltip-muted: color-mix(in oklab, var(--p-bg) 65%, var(--p-fg));
+  --chart-marker-background: var(--p-surface);
+  --chart-marker-border: var(--p-rule);
+  --chart-marker-foreground: var(--p-fg);
+  --chart-marker-badge-background: var(--p-fg);
+  --chart-marker-badge-foreground: var(--p-bg);
+  --chart-indicator-color: var(--p-fg-muted);
+  --chart-indicator-secondary-color: var(--p-rule);
+  --chart-segment-background: color-mix(in oklab, var(--p-fg) 6%, transparent);
+  --chart-segment-line: var(--p-fg-muted);
+  --chart-label: var(--p-fg-muted);
+  --chart-scale-01: var(--p-surface);
+  --chart-scale-02: var(--p-surface-2);
+  --chart-scale-03: var(--p-series-2);
+  --chart-scale-04: color-mix(in oklab, var(--p-accent) 60%, var(--p-series-2));
+  --chart-scale-05: var(--p-accent);
+  --chart-scale-pattern-color: var(--p-surface);
+
+  --radius: 1rem;
+}
+
+.inverse {
+  --p-bg: var(--p-inv-bg);
+  --p-fg: var(--p-inv-fg);
+  --p-fg-muted: var(--p-inv-fg-muted);
+  --p-surface: var(--p-inv-surface);
+  --p-surface-2: var(--p-inv-surface-2);
+  --p-rule: var(--p-inv-rule);
+  --p-accent: var(--p-inv-accent);
+  --p-accent-fg: var(--p-inv-accent-fg);
+  --p-series-2: var(--p-inv-series-2);
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-surface-2: var(--surface-2);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-heading: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+
+  --radius-sm: calc(var(--radius) * 0.5);
+  --radius-md: calc(var(--radius) * 0.75);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.25);
+  --radius-2xl: calc(var(--radius) * 1.5);
+  --radius-3xl: calc(var(--radius) * 2);
+  --radius-4xl: calc(var(--radius) * 2.5);
+
+  /* Easing curves measured on cuberto.com */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-snap: cubic-bezier(0.4, 0, 0, 1);
+  --ease-soft: cubic-bezier(0.25, 1, 0.5, 1);
+
+  --animate-marquee: marquee var(--duration) infinite linear;
+  --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% - var(--gap)));
+    }
+  }
+  @keyframes marquee-vertical {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(calc(-100% - var(--gap)));
+    }
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Type scale (fluid, Cuberto proportions: 90px display / 80px titles) */
+/* ------------------------------------------------------------------ */
+@utility text-display {
+  font-size: clamp(3rem, 1.6rem + 5vw, 5.625rem);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  font-weight: 500;
+}
+@utility text-title {
+  font-size: clamp(2.5rem, 1.5rem + 4vw, 5rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-weight: 500;
+}
+@utility text-subtitle {
+  font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  font-weight: 400;
+}
+@utility text-eyebrow {
+  font-size: 0.8125rem;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+@utility container-site {
+  width: 100%;
+  max-width: 90rem;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 3rem);
+}
+@utility container-narrow {
+  width: 100%;
+  max-width: 70rem;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 3rem);
+}
+
+/* Signature interaction: the residual map develops outward from the pointer. */
+@property --develop {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 0%;
+}
+.develop-layer {
+  --develop: 0%;
+  -webkit-mask-image: radial-gradient(
+    circle at var(--mx, 50%) var(--my, 50%),
+    #000 calc(var(--develop) * 0.55),
+    transparent var(--develop)
+  );
+  mask-image: radial-gradient(
+    circle at var(--mx, 50%) var(--my, 50%),
+    #000 calc(var(--develop) * 0.55),
+    transparent var(--develop)
+  );
+  transition: --develop 1.4s var(--ease-out-expo);
+}
+.develop:hover .develop-layer,
+.develop:focus-visible .develop-layer,
+.develop[data-developed="true"] .develop-layer {
+  --develop: 160%;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    scrollbar-color: var(--p-fg-muted) var(--p-bg);
+    caret-color: var(--primary);
+  }
+  :where(table) {
+    font-variant-numeric: tabular-nums;
+  }
+  body {
+    @apply bg-background text-foreground;
+    overflow-x: clip;
+    transition: background-color 0.4s var(--ease-soft), color 0.4s var(--ease-soft);
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  ::selection {
+    background: var(--primary);
+    color: var(--primary-foreground);
+  }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

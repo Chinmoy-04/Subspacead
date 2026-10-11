@@ -1,0 +1,191 @@
+{
+  "settings": {
+    "backbone": "dinov2_vitb14",
+    "image_size": 448,
+    "n_aug": 8,
+    "k": 1,
+    "seed": 0
+  },
+  "items": [
+    {
+      "id": "mvtec-hazelnut",
+      "outcome": "detected",
+      "dataset": "mvtec",
+      "category": "hazelnut",
+      "defect": "crack",
+      "file": "004.png",
+      "aspect": 1.0,
+      "image_score": 554.5897,
+      "normal_score_max": 270.9492,
+      "normal_count": 8,
+      "n_components": 246,
+      "n_views": 9,
+      "frames": {
+        "input": "/showcase/mvtec-hazelnut-input.webp",
+        "heatmap": "/showcase/mvtec-hazelnut-heatmap.webp",
+        "overlay": "/showcase/mvtec-hazelnut-overlay.webp",
+        "mask": "/showcase/mvtec-hazelnut-mask.webp"
+      }
+    },
+    {
+      "id": "mvtec-bottle",
+      "outcome": "detected",
+      "dataset": "mvtec",
+      "category": "bottle",
+      "defect": "broken_small",
+      "file": "000.png",
+      "aspect": 1.0,
+      "image_score": 440.4534,
+      "normal_score_max": 335.5494,
+      "normal_count": 8,
+      "n_components": 191,
+      "n_views": 9,
+      "frames": {
+        "input": "/showcase/mvtec-bottle-input.webp",
+        "heatmap": "/showcase/mvtec-bottle-heatmap.webp",
+        "overlay": "/showcase/mvtec-bottle-overlay.webp",
+        "mask": "/showcase/mvtec-bottle-mask.webp"
+      }
+    },
+    {
+      "id": "mvtec-carpet",
+      "outcome": "detected",
+      "dataset": "mvtec",
+      "category": "carpet",
+      "defect": "color",
+      "file": "015.png",
+      "aspect": 1.0,
+      "image_score": 550.4562,
+      "normal_score_max": 222.3116,
+      "normal_count": 8,
+      "n_components": 210,
+      "n_views": 9,
+      "frames": {
+        "input": "/showcase/mvtec-carpet-input.webp",
+        "heatmap": "/showcase/mvtec-carpet-heatmap.webp",
+        "overlay": "/showcase/mvtec-carpet-overlay.webp",
+        "mask": "/showcase/mvtec-carpet-mask.webp"
+      }
+    },
+    {
+      "id": "mvtec-metal_nut",
+      "outcome": "detected",
+      "dataset": "mvtec",
+      "category": "metal_nut",
+      "defect": "bent",
+      "file": "010.png",
+      "aspect": 1.0,
+      "image_score": 516.6916,
+      "normal_score_max": 194.0864,
+      "normal_count": 8,
+      "n_components": 283,
+      "n_views": 9,
+      "frames": {
+        "input": "/showcase/mvtec-metal_nut-input.webp",
+        "heatmap": "/showcase/mvtec-metal_nut-heatmap.webp",
+        "overlay": "/showcase/mvtec-metal_nut-overlay.webp",
+        "mask": "/showcase/mvtec-metal_nut-mask.webp"
+      }
+    },
+    {
+      "id": "visa-pcb1",
+      "outcome": "detected",
+      "dataset": "visa",
+      "category": "pcb1",
+      "defect": "Anomaly",
+      "file": "008.JPG",
+      "aspect": 1.3121,
+      "image_score": 278.2691,
+      "normal_score_max": 239.906,
+      "normal_count": 8,
+      "n_components": 289,
+      "n_views": 9,
+      "frames": {
+        "input": "/showcase/visa-pcb1-input.webp",
+        "heatmap": "/showcase/visa-pcb1-heatmap.webp",
+        "overlay": "/showcase/visa-pcb1-overlay.webp",
+        "mask": "/showcase/visa-pcb1-mask.webp"
+      }
+    },
+    {
+      "id": "visa-candle",
+      "outcome": "detected",
+      "dataset": "visa",
+      "category": "candle",
+      "defect": "Anomaly",
+      "file": "001.JPG",
+      "aspect": 1.0993,
+      "image_score": 361.0755,
+      "normal_score_max": 276.6402,
+      "normal_count": 8,
+      "n_components": 249,
+      "n_views": 9,
+      "frames": {
+        "input": "/showcase/visa-candle-input.webp",
+        "heatmap": "/showcase/visa-candle-heatmap.webp",
+        "overlay": "/showcase/visa-candle-overlay.webp",
+        "mask": "/showcase/visa-candle-mask.webp"
+      }
+    },
+    {
+      "id": "mvtec-transistor",
+      "outcome": "missed",
+      "dataset": "mvtec",
+      "category": "transistor",
+      "defect": "cut_lead",
+      "file": "002.png",
+      "aspect": 1.0,
+      "image_score": 319.6571,
+      "normal_score_max": 350.8165,
+      "normal_count": 8,
+      "n_components": 204,
+      "n_views": 1,
+      "frames": {
+        "input": "/showcase/mvtec-transistor-input.webp",
+        "heatmap": "/showcase/mvtec-transistor-heatmap.webp",
+        "overlay": "/showcase/mvtec-transistor-overlay.webp",
+        "mask": "/showcase/mvtec-transistor-mask.webp"
+      }
+    },
+    {
+      "id": "mvtec-screw",
+      "outcome": "missed",
+      "dataset": "mvtec",
+      "category": "screw",
+      "defect": "manipulated_front",
+      "file": "012.png",
+      "aspect": 1.0,
+      "image_score": 186.9314,
+      "normal_score_max": 246.4461,
+      "normal_count": 8,
+      "n_components": 242,
+      "n_views": 9,
+      "frames": {
+        "input": "/showcase/mvtec-screw-input.webp",
+        "heatmap": "/showcase/mvtec-screw-heatmap.webp",
+        "overlay": "/showcase/mvtec-screw-overlay.webp",
+        "mask": "/showcase/mvtec-screw-mask.webp"
+      }
+    },
+    {
+      "id": "visa-macaroni2",
+      "outcome": "missed",
+      "dataset": "visa",
+      "category": "macaroni2",
+      "defect": "Anomaly",
+      "file": "015.JPG",
+      "aspect": 1.5,
+      "image_score": 196.0211,
+      "normal_score_max": 238.3184,
+      "normal_count": 8,
+      "n_components": 249,
+      "n_views": 9,
+      "frames": {
+        "input": "/showcase/visa-macaroni2-input.webp",
+        "heatmap": "/showcase/visa-macaroni2-heatmap.webp",
+        "overlay": "/showcase/visa-macaroni2-overlay.webp",
+        "mask": "/showcase/visa-macaroni2-mask.webp"
+      }
+    }
+  ]
+}
