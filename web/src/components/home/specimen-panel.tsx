@@ -5,6 +5,7 @@ import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform } fr
 import { useEffect, useRef, useState } from "react";
 import { BACKBONE_SHORT, DATASET_LABEL, categoryLabel, defectLabel, sheetRef, showcase } from "@/lib/content";
 import { cn } from "@/lib/utils";
+import { formatChapter } from "@/components/site/chapter";
 import { ToleranceMark } from "@/components/site/tolerance";
 
 const PHASES = [
@@ -119,7 +120,7 @@ export function SpecimenPanel() {
           <div className="flex items-center justify-between gap-4 font-mono text-xs text-muted-foreground">
             <span className="whitespace-nowrap">
               Sheet {sheetRef(item.dataset, s.k)} · <span className="max-sm:hidden">Case </span>
-              {String(caseIdx + 1).padStart(2, "0")}/{String(CASES.length).padStart(2, "0")}
+              {formatChapter(caseIdx)}/{String(CASES.length).padStart(2, "0")}
             </span>
             <div className="flex items-center gap-1">
               <IconButton label="Previous case" onClick={() => go(-1)}>

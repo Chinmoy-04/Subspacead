@@ -4,7 +4,7 @@ import { CheckIcon, CopyIcon } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { Magnetic } from "@/components/site/magnetic";
-import { PAPER_URL, REPO_URL } from "@/components/site/nav-links";
+import { PAPER_REPO_URL, PAPER_URL, REPO_URL } from "@/components/site/nav-links";
 
 const COMMANDS = [
   "uv run uvicorn server.main:app --port 8000",
@@ -28,7 +28,10 @@ export function Outro() {
           </div>
           <div className="flex flex-wrap gap-x-8 gap-y-3 text-[0.9375rem]">
             <a href={REPO_URL} target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:text-primary">
-              Source on GitHub
+              This reproduction
+            </a>
+            <a href={PAPER_REPO_URL} target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:text-primary">
+              Official code
             </a>
             <a href={PAPER_URL} target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:text-primary">
               Paper on arXiv

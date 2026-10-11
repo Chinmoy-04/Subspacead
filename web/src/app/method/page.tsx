@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { METHOD_STEPS } from "@/components/home/method-steps";
+import { ChapterRow, formatChapter } from "@/components/site/chapter";
 import { PAPER_URL } from "@/components/site/nav-links";
 import { PageHeader } from "@/components/site/page-header";
 import { Reveal } from "@/components/site/reveal";
@@ -73,31 +74,39 @@ export default function MethodPage() {
           </p>
         }
       />
-      <ol className="container-site flex flex-col pb-24 md:pb-32">
+      <div className="border-t border-border pb-8 md:pb-12">
         {METHOD_STEPS.map((step, i) => (
-          <li key={step.title} className="grid grid-cols-[minmax(0,1fr)] gap-8 border-t border-border py-14 md:py-20 lg:grid-cols-[6rem_minmax(0,1.2fr)_minmax(0,1fr)] lg:gap-12">
-            <span className="font-mono text-sm text-muted-foreground tabular-nums">{String(i + 1).padStart(2, "0")}</span>
-            <div className="flex flex-col gap-6">
-              <h2 className="text-4xl font-medium tracking-tight md:text-5xl">{step.title}</h2>
-              <p className="max-w-[60ch] text-xl text-pretty">{step.body}</p>
-              <p className="max-w-[65ch] leading-relaxed text-muted-foreground text-pretty">{DETAIL[i]}</p>
-              <dl className="mt-2 grid grid-cols-1 border-t border-border sm:grid-cols-3">
-                {step.readings.map(([term, value]) => (
-                  <div key={term} className="flex flex-col gap-1 border-b border-border py-4 sm:border-b-0 sm:pr-4">
-                    <dt className={/[τρσμ]/.test(term) ? "text-xs text-muted-foreground" : "font-mono text-xs tracking-wide text-muted-foreground uppercase"}>
-                      {term}
-                    </dt>
-                    <dd className="text-sm">{value}</dd>
-                  </div>
-                ))}
-              </dl>
+          <ChapterRow key={step.title} index={i} contentClassName="lg:pl-10">
+            <div className="grid grid-cols-1 gap-10 py-14 md:py-20 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] lg:gap-12">
+              <div className="flex flex-col gap-6">
+                <p className="font-mono text-sm text-muted-foreground tabular-nums lg:hidden">{formatChapter(i)}</p>
+                <h2 className="text-title max-w-[16ch] text-balance">{step.title}</h2>
+                <p className="max-w-[60ch] text-xl text-pretty">{step.body}</p>
+                <p className="max-w-[65ch] leading-relaxed text-muted-foreground text-pretty">{DETAIL[i]}</p>
+                <dl className="mt-2 grid grid-cols-1 border-t border-border sm:grid-cols-3">
+                  {step.readings.map(([term, value]) => (
+                    <div key={term} className="flex flex-col gap-1 border-b border-border py-4 sm:border-b-0 sm:pr-4">
+                      <dt
+                        className={
+                          /[τρσμ]/.test(term)
+                            ? "text-xs text-muted-foreground"
+                            : "font-mono text-xs tracking-wide text-muted-foreground uppercase"
+                        }
+                      >
+                        {term}
+                      </dt>
+                      <dd className="text-sm">{value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+              <Reveal className="lg:pt-2">
+                <Visual step={i} />
+              </Reveal>
             </div>
-            <Reveal className="lg:pt-2">
-              <Visual step={i} />
-            </Reveal>
-          </li>
+          </ChapterRow>
         ))}
-      </ol>
+      </div>
       <section className="inverse rounded-t-[2.5rem] bg-background text-foreground">
         <div className="container-site grid grid-cols-[minmax(0,1fr)] gap-10 py-20 md:py-28 lg:grid-cols-2 lg:gap-20">
           <h2 className="text-4xl font-medium tracking-tight text-balance md:text-5xl">What this reproduction does differently.</h2>

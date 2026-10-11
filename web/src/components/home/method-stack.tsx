@@ -3,6 +3,7 @@
 import { useLenis } from "lenis/react";
 import { useMotionValueEvent, useReducedMotion, useScroll } from "motion/react";
 import { useEffect, useRef, useState } from "react";
+import { formatChapter } from "@/components/site/chapter";
 import { cn } from "@/lib/utils";
 import { METHOD_STEPS } from "./method-steps";
 
@@ -47,7 +48,7 @@ export function MethodStack() {
               ran with.
             </p>
             <p className="hidden font-mono text-sm text-muted-foreground tabular-nums lg:block" aria-hidden>
-              Step {String(active + 1).padStart(2, "0")} / {String(METHOD_STEPS.length).padStart(2, "0")}
+              {formatChapter(active)} / {String(METHOD_STEPS.length).padStart(2, "0")}
             </p>
           </div>
 
@@ -69,7 +70,7 @@ export function MethodStack() {
                     )}
                   >
                     <div className="flex items-baseline gap-5 px-6 py-5 md:px-8">
-                      <span className="font-mono text-sm tabular-nums opacity-70">{String(i + 1).padStart(2, "0")}</span>
+                      <span className="font-mono text-sm text-muted-foreground tabular-nums">{formatChapter(i)}</span>
                       <span className="text-subtitle">{step.title}</span>
                     </div>
                     <div

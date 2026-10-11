@@ -51,3 +51,7 @@ PAUSE
 findings.html
 
 .tmp/
+
+# Paper PDF — link to arXiv; do not commit or host locally
+*.pdf
+2602.23013*.pdf

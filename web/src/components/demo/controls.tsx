@@ -1,7 +1,8 @@
 "use client";
 
+import { useLenis } from "lenis/react";
 import { UploadIcon, XIcon } from "lucide-react";
-import { useId, useRef, type ReactNode } from "react";
+import { useEffect, useId, useRef, useState, type ReactNode } from "react";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Slider } from "@/components/ui/slider";
@@ -76,19 +77,43 @@ export function Choice({
   disabled?: boolean;
   placeholder?: string;
 }) {
+  const [open, setOpen] = useState(false);
+  const lenis = useLenis();
+
+  // Lenis scroll + portaled menus = floating trigger mismatch. Keep the menu
+  // in-tree (portal=false) and dismiss it if the page still scrolls.
+  useEffect(() => {
+    if (!open) return;
+    const close = () => setOpen(false);
+    const unsub = lenis?.on("scroll", close);
+    window.addEventListener("scroll", close, { passive: true });
+    return () => {
+      unsub?.();
+      window.removeEventListener("scroll", close);
+    };
+  }, [open, lenis]);
+
   return (
-    <Select value={value} onValueChange={onChange} disabled={disabled}>
-      <SelectTrigger id={id} className="h-11 w-full rounded-xl">
-        <SelectValue placeholder={placeholder} />
-      </SelectTrigger>
-      <SelectContent className="max-h-80" data-lenis-prevent>
-        {options.map((o) => (
-          <SelectItem key={o.value} value={o.value}>
-            {o.label}
-          </SelectItem>
-        ))}
-      </SelectContent>
-    </Select>
+    <div className="relative z-20 w-full">
+      <Select value={value} onValueChange={onChange} disabled={disabled} open={open} onOpenChange={setOpen}>
+        <SelectTrigger id={id} className="h-11 w-full rounded-xl">
+          <SelectValue placeholder={placeholder} />
+        </SelectTrigger>
+        <SelectContent
+          portal={false}
+          position="popper"
+          align="start"
+          className="max-h-80 w-[var(--radix-select-trigger-width)]"
+          data-lenis-prevent
+        >
+          {options.map((o) => (
+            <SelectItem key={o.value} value={o.value}>
+              {o.label}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+    </div>
   );
 }
 

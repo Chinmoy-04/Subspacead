@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { Magnetic, PillButton } from "./magnetic";
-import { NAV_LINKS, PAPER_URL, REPO_URL } from "./nav-links";
+import { NAV_LINKS, PAPER_REPO_URL, PAPER_URL, REPO_URL } from "./nav-links";
 import { ThemeSwitcher } from "./theme-switcher";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -88,16 +88,19 @@ export function SiteHeader() {
   return (
     <>
       <header className="relative z-40">
-        <div className="container-site flex h-20 items-center justify-between gap-6 md:h-24">
-          <Link href="/" aria-label="SubspaceAD home" className="shrink-0">
+        <div className="container-site relative flex h-20 items-center md:h-24">
+          <Link href="/" aria-label="SubspaceAD home" className="relative z-10 shrink-0">
             <Wordmark />
           </Link>
-          <nav aria-label="Primary" className="hidden items-center gap-8 lg:flex">
+          <nav
+            aria-label="Primary"
+            className="absolute top-1/2 left-1/2 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-8 lg:flex"
+          >
             {NAV_LINKS.map((l) => (
               <NavLink key={l.href} {...l} />
             ))}
           </nav>
-          <div className="flex items-center gap-3">
+          <div className="relative z-10 ml-auto flex items-center gap-3">
             <ThemeSwitcher className="hidden sm:inline-flex" />
             <span className="hidden sm:inline-flex">
               <PillButton href="/demo" data-cursor="Try it">
@@ -210,8 +213,11 @@ export function SiteHeader() {
                   <a href={PAPER_URL} target="_blank" rel="noreferrer" className="hover:text-primary">
                     Paper · arXiv:2602.23013
                   </a>
+                  <a href={PAPER_REPO_URL} target="_blank" rel="noreferrer" className="hover:text-primary">
+                    Official code
+                  </a>
                   <a href={REPO_URL} target="_blank" rel="noreferrer" className="hover:text-primary">
-                    Source on GitHub
+                    This reproduction
                   </a>
                   <Link href="/lab/runs" className="hover:text-primary">
                     Lab · run monitor

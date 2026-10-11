@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { NAV_LINKS, PAPER_URL, REPO_URL } from "./nav-links";
+import { NAV_LINKS, PAPER_REPO_URL, PAPER_URL, REPO_URL } from "./nav-links";
 import { Wordmark } from "./site-header";
 
 export function SiteFooter() {
@@ -25,8 +25,11 @@ export function SiteFooter() {
           <FooterLink href={PAPER_URL} external>
             arXiv:2602.23013
           </FooterLink>
+          <FooterLink href={PAPER_REPO_URL} external>
+            Official code
+          </FooterLink>
           <FooterLink href={REPO_URL} external>
-            GitHub
+            This reproduction
           </FooterLink>
           <FooterLink href="/lab/runs">Lab · runs</FooterLink>
         </FooterColumn>
