@@ -28,7 +28,7 @@ export function MarkdownTables({ source }: { source: string }) {
       const [head, , ...body] = block;
       const right = cells(block[1] ?? "").map((c) => c.endsWith(":"));
       out.push(
-        <div key={`t${i}`} className="overflow-x-auto" data-lenis-prevent>
+        <div key={`t${i}`} className="min-w-0 w-full overflow-x-auto overscroll-x-contain" data-lenis-prevent>
           <table className="w-full border-collapse font-mono text-xs">
             <thead>
               <tr className="border-b border-foreground text-left text-muted-foreground">

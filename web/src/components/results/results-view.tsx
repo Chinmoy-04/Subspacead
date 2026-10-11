@@ -88,7 +88,7 @@ function Comparison({ data }: { data: ResultsData }) {
 
 function TableOne({ data }: { data: ResultsData }) {
   return (
-    <section className="container-site flex flex-col gap-8 py-16 md:py-24">
+    <section className="container-site flex min-w-0 flex-col gap-8 py-16 md:py-24">
       <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
         <h2 className="text-4xl font-medium tracking-tight md:text-5xl">Table 1, remeasured</h2>
         <p className="max-w-md text-sm text-muted-foreground">
@@ -96,7 +96,7 @@ function TableOne({ data }: { data: ResultsData }) {
           Marks: filled within ±{TOLERANCE.match.toFixed(1)}, half within ±{TOLERANCE.within.toFixed(1)}, ring outside.
         </p>
       </div>
-      <Reveal className="overflow-x-auto" data-lenis-prevent>
+      <Reveal className="min-w-0 w-full overflow-x-auto overscroll-x-contain" data-lenis-prevent>
         <table className="w-full min-w-[52rem] border-collapse text-sm tabular-nums">
           <caption className="sr-only">Reproduction against the paper&rsquo;s Table 1 for every dataset, shot count and metric</caption>
           <thead>

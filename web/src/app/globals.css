@@ -252,12 +252,14 @@ html[data-theme="dark"] {
 @utility container-site {
   width: 100%;
   max-width: 90rem;
+  min-width: 0;
   margin-inline: auto;
   padding-inline: clamp(1.25rem, 4vw, 3rem);
 }
 @utility container-narrow {
   width: 100%;
   max-width: 70rem;
+  min-width: 0;
   margin-inline: auto;
   padding-inline: clamp(1.25rem, 4vw, 3rem);
 }
@@ -298,6 +300,7 @@ html[data-theme="dark"] {
     text-rendering: optimizeLegibility;
     scrollbar-color: var(--p-fg-muted) var(--p-bg);
     caret-color: var(--primary);
+    overflow-x: clip;
   }
   :where(table) {
     font-variant-numeric: tabular-nums;

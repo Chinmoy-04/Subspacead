@@ -149,7 +149,7 @@ export function AblationsView() {
 
       <section className="container-site flex flex-col gap-6 pb-16 md:pb-24">
         <h2 className="text-3xl font-medium tracking-tight md:text-4xl">Aggregated table</h2>
-        <div className="overflow-x-auto" data-lenis-prevent>
+        <div className="min-w-0 w-full overflow-x-auto overscroll-x-contain" data-lenis-prevent>
           <table className="w-full min-w-[40rem] border-collapse text-sm tabular-nums">
             <caption className="sr-only">
               Mean {ABL_METRIC_LABEL[metric]} per variant, dataset and shot count; the best variant per column is underlined
@@ -201,7 +201,7 @@ export function AblationsView() {
               {shots.length > 1 && <Pills label="Shots" value={dK} options={shots} onChange={setDetailK} format={(k) => `${k}-shot`} />}
             </div>
           </div>
-          <div className="max-h-[70vh] overflow-auto rounded-2xl border border-border" data-lenis-prevent>
+          <div className="max-h-[70vh] min-w-0 w-full overflow-auto overscroll-contain rounded-2xl border border-border" data-lenis-prevent>
             <table className="w-full min-w-[36rem] border-collapse text-sm tabular-nums">
               <caption className="sr-only">
                 {ABL_METRIC_LABEL[metric]} per category for each variant, {DATASET_LABEL[dDs]} {dK}-shot

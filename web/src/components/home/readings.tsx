@@ -78,7 +78,7 @@ export function Readings() {
           ))}
         </ToggleGroup>
 
-        <div className="overflow-x-auto" data-lenis-prevent>
+        <div className="min-w-0 w-full overflow-x-auto overscroll-x-contain" data-lenis-prevent>
           <table className="w-full border-collapse font-mono text-[0.8125rem] tabular-nums sm:min-w-[36rem]">
             <caption className="sr-only">
               {METRIC_LABEL[metric]}: paper value, reproduction mean ± standard deviation, deviation and tolerance
