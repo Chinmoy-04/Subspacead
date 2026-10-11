@@ -54,8 +54,8 @@ export function PillButton(props: PillProps) {
     "disabled:pointer-events-none disabled:opacity-50",
     size === "md" ? "h-12 px-6 text-[0.9375rem]" : "h-[3.625rem] px-8 text-base",
     variant === "fill"
-      ? "bg-foreground text-background hover:bg-primary hover:text-primary-foreground"
-      : "border border-current/25 text-foreground hover:border-foreground hover:bg-foreground hover:text-background",
+      ? "bg-primary text-primary-foreground hover:opacity-90"
+      : "border border-current/25 text-foreground hover:border-primary hover:bg-primary hover:text-primary-foreground",
     className
   );
   const inner = <span className="relative z-10 inline-flex items-center gap-2">{children}</span>;
@@ -95,7 +95,7 @@ export function RoundArrow({ className, children }: { className?: string; childr
   return (
     <span
       className={cn(
-        "inline-flex size-8 items-center justify-center rounded-full bg-foreground text-background transition-transform duration-300 ease-[var(--ease-out-expo)] group-hover:scale-110 group-hover:rotate-45",
+        "inline-flex size-8 items-center justify-center rounded-full bg-primary text-primary-foreground transition-transform duration-300 ease-[var(--ease-out-expo)] group-hover:scale-110 group-hover:rotate-45",
         className
       )}
     >

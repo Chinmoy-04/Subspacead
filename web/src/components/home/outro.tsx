@@ -41,7 +41,7 @@ export function Outro() {
         <Magnetic strength={0.35} className="justify-self-start lg:justify-self-end">
           <Link
             href="/demo"
-            className="flex size-48 items-center justify-center rounded-full bg-foreground text-center text-lg font-medium text-background transition-[background-color,color,scale] duration-500 ease-[var(--ease-out-expo)] hover:scale-105 hover:bg-primary hover:text-primary-foreground md:size-56"
+            className="flex size-48 items-center justify-center rounded-full bg-primary text-center text-lg font-medium text-primary-foreground transition-[background-color,color,scale,opacity] duration-500 ease-[var(--ease-out-expo)] hover:scale-105 hover:opacity-90 md:size-56"
           >
             Open the
             <br />

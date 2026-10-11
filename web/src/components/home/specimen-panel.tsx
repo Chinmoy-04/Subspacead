@@ -82,13 +82,13 @@ export function SpecimenPanel() {
             <motion.span
               key={`${item.id}-${phase}`}
               aria-hidden
-              className="pointer-events-none absolute inset-y-0 w-px bg-white/90"
+              className="pointer-events-none absolute inset-y-0 w-px bg-foreground/90"
               initial={{ left: "0%", opacity: phase === 0 ? 0 : 1 }}
               animate={{ left: "100%", opacity: 0 }}
               transition={{ duration: 1.1, ease: SNAP }}
             />
           )}
-          <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 bg-gradient-to-t from-black/70 to-transparent p-5 text-white md:p-7">
+          <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 bg-gradient-to-t from-background/80 to-transparent p-5 text-foreground md:p-7">
             <ol className="flex gap-1.5" aria-label="Phase">
               {PHASES.map((p, i) => (
                 <li key={p.key}>
@@ -101,7 +101,9 @@ export function SpecimenPanel() {
                     aria-current={i === phase ? "step" : undefined}
                     className={cn(
                       "h-9 rounded-full px-3.5 font-mono text-xs uppercase tracking-wider transition-colors duration-300",
-                      i === phase ? "bg-white text-black" : "bg-white/10 text-white/80 hover:bg-white/20"
+                      i === phase
+                        ? "bg-foreground text-background"
+                        : "bg-foreground/10 text-foreground/80 hover:bg-foreground/20"
                     )}
                   >
                     <span className="tabular-nums opacity-60">{i + 1}</span> {p.label}

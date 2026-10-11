@@ -7,7 +7,7 @@ export const THEMES = [
   {
     id: "dark",
     label: "Dark",
-    note: "Thermal Graphite — charcoal with heatmap orange",
+    note: "Thermal — near-black with heatmap orange",
   },
 ] as const;
 

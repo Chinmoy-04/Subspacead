@@ -59,24 +59,26 @@ html[data-theme="light"] {
 }
 
 html[data-theme="dark"] {
-  --p-bg: #121212;
-  --p-fg: #e8e4df;
-  --p-fg-muted: #9b948b;
-  --p-surface: #1b1a19;
-  --p-surface-2: #252321;
-  --p-rule: #2c2a27;
+  /* Page sits on deep charcoal; inverse drops to true black — same
+     two-plane flip as light (paper ↔ ink), just polarity-reversed. */
+  --p-bg: #100e0d;
+  --p-fg: #f3f0eb;
+  --p-fg-muted: #9a9288;
+  --p-surface: #1a1715;
+  --p-surface-2: #2a2522;
+  --p-rule: #3a342f;
   --p-accent: #ff6a2b;
-  --p-accent-fg: #121212;
-  --p-series-2: #6d655c;
+  --p-accent-fg: #0a0908;
+  --p-series-2: #7a7168;
 
-  --p-inv-bg: #241f1c;
-  --p-inv-fg: #f3eee8;
-  --p-inv-fg-muted: #a59c91;
-  --p-inv-surface: #2e2824;
-  --p-inv-surface-2: #39322d;
-  --p-inv-rule: #3d3530;
+  --p-inv-bg: #000000;
+  --p-inv-fg: #f5f2ed;
+  --p-inv-fg-muted: #a39b91;
+  --p-inv-surface: #141210;
+  --p-inv-surface-2: #221e1b;
+  --p-inv-rule: #2e2925;
   --p-inv-accent: #ff6a2b;
-  --p-inv-accent-fg: #121212;
+  --p-inv-accent-fg: #000000;
   --p-inv-series-2: #6d655c;
   color-scheme: dark;
 }
