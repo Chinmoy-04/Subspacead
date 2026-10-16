@@ -18,8 +18,8 @@ export function Outro() {
         <div className="flex min-w-0 flex-col gap-10">
           <h2 className="text-display max-w-[11ch] text-balance">Score a defect yourself.</h2>
           <p className="max-w-lg text-lg text-muted-foreground text-pretty">
-            Start the backend, pick a category, fit the subspace on a single normal image, then score any test image or
-            one of your own.
+            The live demo needs a local GPU server for now. Clone the repo, start the backend, pick a category, fit the
+            subspace on a single normal image, then score any test image or one of your own.
           </p>
           <div className="flex max-w-xl flex-col gap-2">
             {COMMANDS.map((c) => (

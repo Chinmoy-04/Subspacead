@@ -4,7 +4,7 @@ import { motion, useMotionValue, useSpring } from "motion/react";
 import { useEffect, useState } from "react";
 
 /**
- * Cuberto-style follower: a small dot that grows into a labelled bubble over
+ * Custom cursor follower: a small dot that grows into a labelled bubble over
  * any element carrying `data-cursor="Label"`. Native cursor stays visible.
  */
 export function Cursor() {

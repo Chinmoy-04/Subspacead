@@ -557,20 +557,29 @@ function Offline({ onRetry }: { onRetry: () => void }) {
   return (
     <div className="inverse flex flex-col gap-8 rounded-[2rem] p-8 md:p-14">
       <p className="inline-flex items-center gap-2 font-mono text-xs text-muted-foreground">
-        <span className="size-2 rounded-full bg-destructive" aria-hidden /> Model server offline
+        <span className="size-2 rounded-full bg-muted-foreground" aria-hidden /> Local GPU only
       </p>
-      <h2 className="text-title max-w-[16ch] text-balance">The demo needs the local model server.</h2>
+      <h2 className="text-title max-w-[18ch] text-balance">This demo runs on your machine, not on the hosted site.</h2>
       <p className="max-w-xl text-lg text-muted-foreground text-pretty">
-        Inference runs on your GPU through the FastAPI backend. Start it from the repository root, then retry. Results,
-        ablations and the gallery work without it.
+        Fitting DINOv2 and scoring images needs a local FastAPI server and a GPU. The public pages already show the
+        measured tables and heatmaps without it.
       </p>
-      <code className="block max-w-xl rounded-xl border border-border bg-surface px-4 py-3 font-mono text-sm">
-        uv run uvicorn server.main:app --port 8000
-      </code>
-      <div>
-        <PillButton onClick={onRetry} variant="outline">
-          <RefreshCwIcon className="size-4" aria-hidden /> Retry connection
+      <div className="flex flex-wrap gap-3">
+        <PillButton href="/gallery">Browse the gallery</PillButton>
+        <PillButton href="/results" variant="outline">
+          View results
         </PillButton>
+      </div>
+      <div className="flex max-w-xl flex-col gap-3 border-t border-border pt-8">
+        <p className="font-mono text-xs tracking-wide text-muted-foreground uppercase">Clone and run locally</p>
+        <code className="block rounded-xl border border-border bg-surface px-4 py-3 font-mono text-sm">
+          uv run uvicorn server.main:app --port 8000
+        </code>
+        <div>
+          <PillButton onClick={onRetry} variant="outline">
+            <RefreshCwIcon className="size-4" aria-hidden /> Retry connection
+          </PillButton>
+        </div>
       </div>
     </div>
   );

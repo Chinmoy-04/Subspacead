@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRef, type ComponentProps, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
-/** Pulls its content toward the pointer while hovered (Cuberto RoundButton). */
+/** Pulls its content toward the pointer while hovered. */
 export function Magnetic({ children, strength = 0.3, className }: { children: ReactNode; strength?: number; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
   const x = useMotionValue(0);
@@ -90,7 +90,7 @@ export function PillButton(props: PillProps) {
   );
 }
 
-/** Small round arrow badge (Cuberto "Explore ↗"). */
+/** Small round arrow badge for explore-style links. */
 export function RoundArrow({ className, children }: { className?: string; children: ReactNode }) {
   return (
     <span

@@ -25,13 +25,18 @@ export default function Home() {
             An independent reproduction of Lendering, Akdag &amp; Bondarev (arXiv:2602.23013), run on the full MVTec-AD
             and VisA protocol.
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            <PillButton href="/demo" size="lg" data-cursor="Try it">
-              Live demo
-            </PillButton>
-            <PillButton href={PAPER_URL} external variant="outline" size="lg">
-              Read the paper <ArrowUpRightIcon className="size-4" aria-hidden />
-            </PillButton>
+          <div className="flex flex-col items-center gap-3">
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              <PillButton href="/demo" size="lg" data-cursor="Try it">
+                Live demo
+              </PillButton>
+              <PillButton href={PAPER_URL} external variant="outline" size="lg">
+                Read the paper <ArrowUpRightIcon className="size-4" aria-hidden />
+              </PillButton>
+            </div>
+            <p className="max-w-sm text-xs text-muted-foreground text-pretty">
+              The interactive demo runs locally on a GPU for now. Results and the gallery work on this site without it.
+            </p>
           </div>
         </div>
       </section>

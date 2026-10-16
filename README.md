@@ -250,6 +250,22 @@ and `web/src/content/showcase.json`.
 Demo tip: start with preset **MVTec · bottle** in **Fast** mode (ViT-B @ 448),
 press **Fit subspace**, then click test thumbnails to score them without refitting.
 
+### Deploying the showcase (no GPU)
+
+The public site is meant to ship **without** the FastAPI backend. Results,
+ablations and the gallery use bundled snapshots; `/demo` explains that scoring
+needs a local GPU server.
+
+```bash
+cd web
+npm i
+npm run sync-assets
+npm run build
+```
+
+On Vercel (or similar): set **Root Directory** to `web`, use the default Next.js
+build, and do **not** set `SUBSPACEAD_API_ORIGIN` / `NEXT_PUBLIC_API_URL`.
+
 ---
 
 ## Project layout

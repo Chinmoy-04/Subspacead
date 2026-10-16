@@ -122,7 +122,11 @@ export function RunsView() {
         {offline && (
           <div className="inverse flex flex-col gap-4 rounded-3xl bg-background p-6 text-foreground md:flex-row md:items-center md:justify-between md:p-8">
             <div className="flex flex-col gap-2">
-              <p className="text-lg font-medium">The API is not running.</p>
+              <p className="font-mono text-xs tracking-wide text-muted-foreground uppercase">Local lab only</p>
+              <p className="text-lg font-medium">Run monitors need the model server on this machine.</p>
+              <p className="max-w-lg text-sm text-muted-foreground">
+                This page is for pausing and resuming long benchmark jobs. It is not part of the public showcase.
+              </p>
               <code className="font-mono text-sm text-muted-foreground">uv run uvicorn server.main:app --port 8000</code>
             </div>
             <ActionButton onClick={refresh} primary>

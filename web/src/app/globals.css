@@ -182,6 +182,9 @@ html[data-theme="dark"] {
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
+  --color-chart-tooltip-background: var(--chart-tooltip-background);
+  --color-chart-tooltip-foreground: var(--chart-tooltip-foreground);
+  --color-chart-tooltip-muted: var(--chart-tooltip-muted);
 
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
@@ -195,7 +198,7 @@ html[data-theme="dark"] {
   --radius-3xl: calc(var(--radius) * 2);
   --radius-4xl: calc(var(--radius) * 2.5);
 
-  /* Easing curves measured on cuberto.com */
+  /* Site motion curves */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-snap: cubic-bezier(0.4, 0, 0, 1);
   --ease-soft: cubic-bezier(0.25, 1, 0.5, 1);
@@ -222,7 +225,7 @@ html[data-theme="dark"] {
 }
 
 /* ------------------------------------------------------------------ */
-/* Type scale (fluid, Cuberto proportions: 90px display / 80px titles) */
+/* Type scale (fluid: ~90px display / ~80px titles at desktop) */
 /* ------------------------------------------------------------------ */
 @utility text-display {
   font-size: clamp(3rem, 1.6rem + 5vw, 5.625rem);
@@ -301,6 +304,8 @@ html[data-theme="dark"] {
     scrollbar-color: var(--p-fg-muted) var(--p-bg);
     caret-color: var(--primary);
     overflow-x: clip;
+    /* Keep layout stable when Radix locks body scroll (select/dialog/menu). */
+    scrollbar-gutter: stable;
   }
   :where(table) {
     font-variant-numeric: tabular-nums;
@@ -322,6 +327,18 @@ html[data-theme="dark"] {
     outline: 2px solid var(--ring);
     outline-offset: 3px;
   }
+}
+
+/*
+ * Radix Select wraps the menu in react-remove-scroll-bar, which injects
+ * `body[data-scroll-locked] { margin-right: <scrollbar>px !important }`.
+ * With Lenis / scrollbar-gutter: stable that gap is already reserved, so the
+ * extra margin shrinks the layout and the page jumps left. Beat the injected
+ * rule with higher specificity (it also uses !important).
+ */
+html body[data-scroll-locked] {
+  margin-right: 0 !important;
+  padding-right: 0 !important;
 }
 
 @media (prefers-reduced-motion: reduce) {

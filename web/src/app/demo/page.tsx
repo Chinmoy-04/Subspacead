@@ -3,7 +3,8 @@ import { LiveDemo } from "@/components/demo/live-demo";
 
 export const metadata: Metadata = {
   title: "Live demo",
-  description: "Fit a SubspaceAD PCA subspace on a few normal images and score test images with heatmaps, live on your GPU.",
+  description:
+    "Local GPU demo: fit a SubspaceAD PCA subspace on a few normal images and score test heatmaps. The hosted site shows measured results and the gallery without a backend.",
 };
 
 export default function DemoPage() {
@@ -12,8 +13,8 @@ export default function DemoPage() {
       <header className="flex flex-col gap-5">
         <h1 className="text-title">Live demo</h1>
         <p className="max-w-2xl text-lg text-muted-foreground text-pretty">
-          Fit a PCA subspace on a few normal images, then score any test image. Hotter colors mean a larger residual,
-          which means more anomalous. Use the fast backbone to explore; switch to paper settings for ViT-G at 672 px.
+          Fit a PCA subspace on a few normal images, then score any test image. Hotter colors mean a larger residual.
+          Needs the local model server on your GPU; use Fast mode to explore, Paper settings for ViT-G at 672 px.
         </p>
       </header>
       <LiveDemo />

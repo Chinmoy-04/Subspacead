@@ -48,7 +48,10 @@ torch_hub/
 *.partial
 PAUSE
 *.log
+*.err
+*.out
 findings.html
+.impeccable/
 
 .tmp/
 

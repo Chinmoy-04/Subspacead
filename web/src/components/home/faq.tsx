@@ -18,7 +18,7 @@ const FAQ = [
   },
   {
     q: "What hardware did this run on?",
-    a: "A laptop RTX 5060 with 8 GB. The benchmark uses the paper settings, ViT-G/14 at 672 px with 30 rotations. The live demo's fast mode uses ViT-B/14 at 448 px so a fit finishes in seconds.",
+    a: "A laptop RTX 5060 with 8 GB. The benchmark uses the paper settings, ViT-G/14 at 672 px with 30 rotations. The interactive demo (local only) uses ViT-B/14 at 448 px in fast mode so a fit finishes in seconds.",
   },
   {
     q: "Is this the authors' project?",
