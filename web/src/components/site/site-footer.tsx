@@ -33,8 +33,10 @@ export function SiteFooter() {
           </FooterLink>
           <FooterLink href="/lab/runs">Lab · runs</FooterLink>
         </FooterColumn>
-        <FooterColumn title="Data">
-          <p className="text-sm text-muted-foreground">
+        <FooterColumn title="Legal">
+          <FooterLink href="/privacy">Privacy policy</FooterLink>
+          <FooterLink href="/terms">Terms of use</FooterLink>
+          <p className="mt-2 text-sm text-muted-foreground">
             MVTec-AD imagery is licensed CC BY-NC-SA 4.0 for non-commercial research. VisA is CC BY 4.0.
           </p>
         </FooterColumn>
