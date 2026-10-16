@@ -188,6 +188,7 @@ export function SiteHeader() {
                       >
                         <Link
                           href={l.href}
+                          onClick={() => setOpen(false)}
                           className="group inline-flex items-baseline gap-4 text-title transition-colors duration-300 hover:text-primary"
                         >
                           <span className="font-mono text-sm tabular-nums text-muted-foreground">0{i + 1}</span>

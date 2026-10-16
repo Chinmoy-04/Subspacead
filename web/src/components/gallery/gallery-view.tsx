@@ -71,56 +71,67 @@ function Lightbox({ items, index, onIndex }: { items: GalleryItem[]; index: numb
 
   return (
     <Dialog open={open} onOpenChange={(o) => !o && onIndex(null)}>
-      <DialogContent className="inverse max-h-[92dvh] gap-6 overflow-y-auto rounded-3xl border-0 bg-background p-5 text-foreground ring-0 sm:max-w-5xl md:p-8" data-lenis-prevent>
-        {item && (
-          <>
-            <div className="flex flex-col gap-1 pr-10">
-              <DialogTitle className="text-2xl font-medium capitalize md:text-3xl">
-                {categoryLabel(item.category)} <span className="text-muted-foreground">· {DATASET_LABEL[item.dataset]}</span>
-              </DialogTitle>
-              <DialogDescription className="font-mono text-xs">
-                {item.section === "failures" ? "Failure case" : "Success"} {item.name} · {(index ?? 0) + 1} of {items.length} · paper settings
-              </DialogDescription>
-            </div>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-              {(
-                [
-                  ["Input", item.input],
-                  ["Ground truth", item.gt],
-                  ["Prediction", item.pred],
-                ] as const
-              ).map(([label, src]) => (
-                <figure key={label} className="flex flex-col gap-2">
-                  <img src={src} alt={`${label} for ${categoryLabel(item.category)} ${item.name}`} className="aspect-square w-full rounded-xl bg-surface object-contain" />
-                  <figcaption className="font-mono text-xs tracking-wide text-muted-foreground uppercase">{label}</figcaption>
-                </figure>
-              ))}
-            </div>
-            <div className="flex items-center justify-between gap-4">
-              <a href={item.full} target="_blank" rel="noreferrer" className="text-sm underline underline-offset-4">
-                Open the original figure
-              </a>
-              <div className="flex gap-2">
-                <button
-                  type="button"
-                  onClick={() => onIndex(((index ?? 0) - 1 + items.length) % items.length)}
-                  className="inline-flex size-11 items-center justify-center rounded-full border border-border hover:border-foreground"
-                  aria-label="Previous case"
-                >
-                  <ChevronLeftIcon className="size-5" />
-                </button>
-                <button
-                  type="button"
-                  onClick={() => onIndex(((index ?? 0) + 1) % items.length)}
-                  className="inline-flex size-11 items-center justify-center rounded-full border border-border hover:border-foreground"
-                  aria-label="Next case"
-                >
-                  <ChevronRightIcon className="size-5" />
-                </button>
+      {/*
+        Clip on the shell, scroll on an inner pane. overflow-y + border-radius on the
+        same transformed dialog lets content paint past the corners on mobile Safari.
+      */}
+      <DialogContent className="inverse max-h-[92dvh] gap-0 overflow-hidden rounded-3xl border-0 bg-background p-0 text-foreground ring-0 sm:max-w-5xl">
+        <div className="max-h-[92dvh] overflow-y-auto overscroll-contain p-5 md:p-8" data-lenis-prevent>
+          {item && (
+            <div className="flex flex-col gap-6">
+              <div className="flex flex-col gap-1 pr-10">
+                <DialogTitle className="text-2xl font-medium capitalize md:text-3xl">
+                  {categoryLabel(item.category)} <span className="text-muted-foreground">· {DATASET_LABEL[item.dataset]}</span>
+                </DialogTitle>
+                <DialogDescription className="font-mono text-xs">
+                  {item.section === "failures" ? "Failure case" : "Success"} {item.name} · {(index ?? 0) + 1} of {items.length} · paper
+                  settings
+                </DialogDescription>
+              </div>
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+                {(
+                  [
+                    ["Input", item.input],
+                    ["Ground truth", item.gt],
+                    ["Prediction", item.pred],
+                  ] as const
+                ).map(([label, src]) => (
+                  <figure key={label} className="flex flex-col gap-2">
+                    <img
+                      src={src}
+                      alt={`${label} for ${categoryLabel(item.category)} ${item.name}`}
+                      className="aspect-square w-full rounded-xl bg-surface object-contain"
+                    />
+                    <figcaption className="font-mono text-xs tracking-wide text-muted-foreground uppercase">{label}</figcaption>
+                  </figure>
+                ))}
+              </div>
+              <div className="flex items-center justify-between gap-4">
+                <a href={item.full} target="_blank" rel="noreferrer" className="text-sm underline underline-offset-4">
+                  Open the original figure
+                </a>
+                <div className="flex gap-2">
+                  <button
+                    type="button"
+                    onClick={() => onIndex(((index ?? 0) - 1 + items.length) % items.length)}
+                    className="inline-flex size-11 items-center justify-center rounded-full border border-border hover:border-foreground"
+                    aria-label="Previous case"
+                  >
+                    <ChevronLeftIcon className="size-5" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => onIndex(((index ?? 0) + 1) % items.length)}
+                    className="inline-flex size-11 items-center justify-center rounded-full border border-border hover:border-foreground"
+                    aria-label="Next case"
+                  >
+                    <ChevronRightIcon className="size-5" />
+                  </button>
+                </div>
               </div>
             </div>
-          </>
-        )}
+          )}
+        </div>
       </DialogContent>
     </Dialog>
   );
